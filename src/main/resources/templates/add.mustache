@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Здесь используется CSS</title>
+    <!--    <link rel="stylesheet" th:href="style.css"/>-->
+</head>
+<body>
+<div>
+
+    <form method="post" name="1" action="add-product" enctype="multipart/form-data">
+        {{#idValue}}
+        <b>Редактируем товар</b>
+        {{/idValue}}
+        {{#productForView}}
+        {{#name}} <input type="text" name="name" value={{productForView.name}}> {{/name}}
+        {{#about}} <input type="text" name="about" value={{about}}> {{/about}}
+        {{#manufacturer}}<input type="text" name="manufacturer" value={{manufacturer}}>{{/manufacturer}}
+        {{#picture}}<input type="file" name="picture" value={{picture}}>{{/picture}}
+        {{#createdDate}}<input type="date" name="createdDate" value={{createdDate}} required>{{/createdDate}}
+        {{#price}}<input type="number" name="price" value={{price}}>{{/price}}
+
+        <!--        <input type="text" name="category" placeholder="Категория"/>-->
+        {{#category}}
+        <td><select name="selected" value={{category}}">
+            <option value=""><h4>Категория</h4></option>
+            {{#categories}}
+            <option value="{{name}}">{{name}}</option>
+            {{/categories}}
+        </select></td>
+        {{/category}}
+        {{/productForView}}
+        <button type="submit">Добавить товар888888</button>
+        <button type="submit" hidden>Изменить данные</button>
+    </form>
+</div>
+<a href="/">Товары</a>
+<div>
+    <form method="post" action="add-category">
+        <input type="text" name="name" placeholder="Категория"/>
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+</body>
+</html>
